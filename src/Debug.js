@@ -10,7 +10,7 @@ var util = (function() {
   }
 })();
 
-exports._trace = function (x, k) {
+export function _trace(x, k) {
   // node only recurses two levels into an object before printing
   // "[object]" for further objects when using console.log()
   if (util !== undefined) {
@@ -19,18 +19,18 @@ exports._trace = function (x, k) {
     console.log(x);
   }
   return k({});
-};
+}
 
-exports._spy = function (tag, x) {
+export function _spy(tag, x) {
   if (util !== undefined) {
     console.log(tag + ":", util.inspect(x, { depth: null, colors: true }));
   } else {
     console.log(tag + ":", x);
   }
   return x;
-};
+}
 
-exports._debugger = function (f) {
+export function _debugger(f) {
   debugger;
   return f();
-};
+}
